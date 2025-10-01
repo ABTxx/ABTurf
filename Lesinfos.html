@@ -1,0 +1,312 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ABTurf — Les Infos</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+  /* ================================
+       Thème sombre
+       ================================ */
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa6bf;
+      --accent:#ffb74d;
+      --success:#7bd389;
+      --danger:#ff7b7b;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#071026 0%, #081028 50%, #041018 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+    }
+    .container{max-width:1100px;margin:0 auto}
+
+	/* ================================
+       Header
+       ================================ */
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    header .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .logo {
+      background: linear-gradient(90deg, #ffd09a, #ffb74d);
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #081022;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.6px;
+    }
+
+    header .title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    header .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+    nav .btn{display:inline-block;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,#1f6f9f,#2ea3ff);color:white;text-decoration:none;font-weight:700;transition:background 0.3s ease}
+    nav .btn:hover{background:linear-gradient(90deg,#2ea3ff,#1f6f9f)}
+	nav .btn.active {box-shadow: 0 0 0 2px white;transform: translateY(-2px);}
+
+	/* ================================
+       Cartes et contenu
+       ================================ */
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+      margin-bottom: 20px;
+    }
+
+	.date{color:var(--muted);font-size:13px}
+		h1,h2,h3{margin:0}
+		h1{font-size:20px}
+		h2{font-size:16px}
+
+    h2, h3 {
+      margin: 0 0 12px 0;
+      font-weight: 600;
+    }
+
+    p {
+      line-height: 1.5;
+      color: #dbe9ff;
+    }
+
+
+    /* Actualités */
+    .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-top:12px}
+    .news-card{cursor:pointer;border-radius:var(--radius);overflow:hidden;background:var(--card);transition:transform 0.3s ease;text-decoration:none;color:#e6eef8}
+    .news-card:hover{transform:translateY(-4px)}
+    .news-card img{width:100%;height:180px;object-fit:cover}
+    .news-card-title{padding:12px;font-weight:600}
+
+    /* Chevaux à suivre */
+    textarea{width:100%;min-height:120px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:#1b2332;color:white}
+
+    /* Footer */
+	footer{margin-top:20px;color:var(--muted);font-size:13px;text-align:center;padding: 4px 0px;}
+    footer a{color:var(--accent);text-decoration:none}
+    footer a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">ABTurf</div>
+        <div>
+          <div class="title">Les Infos</div>
+          <div class="subtitle">Actualités & chevaux à suivre</div>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="Accueil.html">Accueil</a>
+        <a class="btn" href="Pronostics.html">Pronostics</a>
+        <a class="btn active" href="Lesinfos.html">Les Infos</a>
+        <a class="btn" href="Abonnement.html">Abonnement</a>
+      </nav>
+	    <div style="margin-left:auto;text-align:right">
+        <div class="date" id="today">...</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Actualités</h2>
+<section class="card">
+  <h2>Le JT des courses</h2>
+  <div class="news-grid">
+    <!-- Actualité 1 -->
+    <a class="news-card" href="actualites/Article1.html">
+      <img src="images/news/Wootton-Bassett.jpg" alt="Actualité 1">
+      <div class="news-card-title">Un grand favori impressionne à Vincennes</div>
+    </a>
+
+    <!-- Actualité 2 -->
+    <a class="news-card" href="actualites/Article2.html">
+      <img src="images/news/JoshPower.jpg" alt="Actualité 2">
+      <div class="news-card-title">Le retour en force d'un champion</div>
+    </a>
+
+    <!-- Actualité 3 -->
+    <a class="news-card" href="actualites/Article3.html">
+      <img src="images/news/Vincennes.jpg" alt="Actualité 3">
+      <div class="news-card-title">Les outsiders à suivre cette semaine</div>
+    </a>
+  </div>
+</section>
+
+
+      <section class="card">
+  <h2>Chevaux à suivre</h2>
+  <p class="small muted">Liste des chevaux à surveiller pour les prochaines courses.</p>
+
+  <!-- Affichage public -->
+  <div id="readArea">
+    <pre id="notesDisplay" style="white-space:pre-wrap; background:#0b1220; padding:12px; border-radius:10px; min-height:120px;">Chargement...</pre>
+  </div>
+
+  <!-- Bouton connexion -->
+  <div id="visitorControls" style="margin-top:10px;">
+    <button id="showLoginBtn" class="btn">✏️ Se connecter pour modifier</button>
+  </div>
+
+  <!-- Boîte login -->
+  <div id="loginBox" style="display:none; margin-top:10px;">
+    <input id="email" type="email" placeholder="Email admin" style="padding:8px;border-radius:6px">
+    <input id="password" type="password" placeholder="Mot de passe" style="padding:8px;border-radius:6px">
+    <button id="loginBtn" class="btn">Se connecter</button>
+    <button id="cancelLoginBtn" class="btn">Annuler</button>
+    <div id="loginStatus" style="margin-top:8px;color:var(--muted)"></div>
+  </div>
+
+  <!-- Zone édition -->
+  <div id="editor" style="display:none; margin-top:12px;">
+    <textarea id="notesEditor" style="width:100%;min-height:140px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:#1b2332;color:white"></textarea>
+    <div style="margin-top:10px;">
+      <button id="saveBtn" class="btn">💾 Sauvegarder</button>
+      <button id="logoutBtn" class="btn">🔒 Se déconnecter</button>
+      <span id="saveStatus" style="margin-left:12px;color:var(--muted)"></span>
+    </div>
+  </div>
+</section>
+
+<!-- Script Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+  import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+  // ⚡ Mets ici ton firebaseConfig copié de la console
+  const firebaseConfig = {
+  apiKey: "AIzaSyAdU-rB3EGIPA9XT5PxzYBeAg2C7QEgoyE",
+  authDomain: "abturf-6ac92.firebaseapp.com",
+  projectId: "abturf-6ac92",
+  storageBucket: "abturf-6ac92.firebasestorage.app",
+  messagingSenderId: "594451732003",
+  appId: "1:594451732003:web:d0052605b8e060036f0396",
+  measurementId: "G-YJLZN2E77T"
+  };
+
+  // ⚡ Mets ici ton UID admin
+  const ADMIN_UID = "X91SuaNCu7Z9jY51GCtXfiO5Jc03";
+
+  // Init Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  const notesDocRef = doc(db, 'publicNotes', 'main');
+
+  // UI refs
+  const notesDisplay = document.getElementById('notesDisplay');
+  const editor = document.getElementById('editor');
+  const notesEditor = document.getElementById('notesEditor');
+  const saveBtn = document.getElementById('saveBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const saveStatus = document.getElementById('saveStatus');
+  const showLoginBtn = document.getElementById('showLoginBtn');
+  const loginBox = document.getElementById('loginBox');
+  const loginBtn = document.getElementById('loginBtn');
+  const cancelLoginBtn = document.getElementById('cancelLoginBtn');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const loginStatus = document.getElementById('loginStatus');
+
+  // Charger notes
+  async function loadNotes() {
+    try {
+      const snap = await getDoc(notesDocRef);
+      notesDisplay.textContent = snap.exists() ? (snap.data().text || '') : '';
+    } catch (err) {
+      notesDisplay.textContent = "Erreur: " + err.message;
+    }
+  }
+
+  // Sauvegarde
+  saveBtn.addEventListener('click', async () => {
+    try {
+      await setDoc(notesDocRef, { text: notesEditor.value, updatedAt: serverTimestamp() });
+      saveStatus.textContent = "✅ Sauvegardé";
+      await loadNotes();
+    } catch (err) {
+      saveStatus.textContent = "Erreur: " + err.message;
+    }
+  });
+
+  // Auth
+  showLoginBtn.addEventListener('click', () => loginBox.style.display = 'block');
+  cancelLoginBtn.addEventListener('click', () => loginBox.style.display = 'none');
+  loginBtn.addEventListener('click', async () => {
+    try {
+      await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+      loginBox.style.display = 'none';
+    } catch (err) {
+      loginStatus.textContent = "Erreur: " + err.message;
+    }
+  });
+  logoutBtn.addEventListener('click', () => signOut(auth));
+
+  // Surveiller connexion
+  onAuthStateChanged(auth, async (user) => {
+    if (user && user.uid === ADMIN_UID) {
+      editor.style.display = 'block';
+      const snap = await getDoc(notesDocRef);
+      notesEditor.value = snap.exists() ? (snap.data().text || '') : '';
+    } else {
+      editor.style.display = 'none';
+    }
+  });
+
+  // Initial load
+  loadNotes();
+</script>
+
+    </main>
+
+    <footer>
+      <div>© ABTurf 2025 — Conseils et pronostics. Jeu responsable.</div>
+      <div>
+        <a href="mentions-legales.html">Mentions légales</a> / <a href="CGV.html">CGV</a>
+      </div>
+	  <footer>Suivez nous sur les réseaux sociaux : <img src="images/logo/LogoX.jpg" width="12px" height="12px"><a href="https://x.com/ABTurfPronos"> Twitter @ABTurfpronos</a> / <img src="images/logo/LogoFacebook.png" width="12px" height="12px"><a href="https://www.facebook.com/profile.php?id=61581396834106"> Facebook ABTurf</a>
+    </footer>
+  </div>
+  <script>
+  const dailyData = {
+      date: new Date().toLocaleDateString('fr-FR', {weekday:'long', year:'numeric', month:'long', day:'numeric'}),
+	  };
+    document.getElementById('today').textContent = dailyData.date;
+	</script>
+</body>
+</html>
