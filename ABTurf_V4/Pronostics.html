@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ABTurf — Pronostics hippiques</title>
+  <meta name="description" content="ABTurf — analyses et pronostics hippiques : Quinté+ du jour et deux pronostics quotidiens.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+      /* ================================
+       Thème sombre
+       ================================ */
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa6bf;
+      --accent:#ffb74d;
+      --success:#7bd389;
+      --danger:#ff7b7b;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#071026 0%, #081028 50%, #041018 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+    }
+    .container{max-width:1100px;margin:0 auto}
+
+    /* ================================
+       Header
+       ================================ */
+	   
+    header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    header .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .logo {
+      background: linear-gradient(90deg, #ffd09a, #ffb74d);
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #081022;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.6px;
+    }
+
+    header .title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    header .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+	
+	    nav {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+    }
+	
+	nav .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #1f6f9f, #2ea3ff);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.3s ease;
+    }
+
+    nav .btn:hover {
+      background: linear-gradient(90deg, #2ea3ff, #1f6f9f);
+    }
+	
+	nav .btn.active {
+	box-shadow: 0 0 0 2px white;
+	transform: translateY(-2px);
+	}
+	
+    /* ================================
+       Cartes et contenu
+       ================================ */
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    @media (max-width:880px){.grid{grid-template-columns:1fr} .sidebar-card{order:2}}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(2,6,23,0.6);margin-bottom: 20px;}
+
+    .quinte-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .date{color:var(--muted);font-size:13px}
+    h1,h2,h3{margin:0}
+    h1{font-size:20px}
+    h2{font-size:16px}
+
+    .analysis{line-height:1.45;color:#dbe9ff;margin-top:8px}
+
+    .selection{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{background:var(--glass);padding:10px 12px;border-radius:999px;font-weight:700}
+    .chip .num{display:inline-block;width:28px;height:28px;line-height:28px;border-radius:50%;background:rgba(255,255,255,0.04);text-align:center;margin-right:8px}
+
+    .confidence{margin-top:12px;display:flex;gap:8px;align-items:center}
+    .bar{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;width:200px}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#ffdfb5)}
+    .conf-val{font-weight:700;color:var(--muted);font-size:13px}
+	
+	.sidebar-card .pronostic{margin-bottom:14px}
+    .pronostic .title{display:flex;justify-content:space-between;align-items:center}
+    .btn{display:inline-block;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,#1f6f9f,#2ea3ff);color:white;text-decoration:none;font-weight:700}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);font-weight:600}
+	.element.style {margin-top: 10px;}
+
+    .sidebar-card .pronostic{margin-bottom:14px}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+    footer{margin-top:20px;color:var(--muted);font-size:13px;text-align:center;padding: 4px 0px;}
+
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    .divider{height:1px;background:rgba(255,255,255,0.03);margin:12px 0;border-radius:2px}
+
+    @media print{
+      body{background:white;color:black;padding:0}
+      .card{background:white;box-shadow:none;border-radius:0}
+    }
+	
+	/* ================================
+    Footer
+    ================================ */
+    footer {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+	img {
+		width: 13px;
+		height: 13px;
+	}
+
+    /* Formulaire admin */
+    #adminForm {display:none; background:var(--card); padding:16px; border-radius:var(--radius); margin-top:20px;}
+    #adminForm input, #adminForm textarea {width:100%; margin-bottom:10px; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:#1b2332; color:white;}
+    #adminForm button {padding:8px 12px; border:none; border-radius:8px; background:var(--accent); color:black; font-weight:bold; cursor:pointer;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">ABTurf</div>
+        <div>
+          <div class="title">Pronostics</div>
+          <div class="subtitle">Pronostics & analyses hippiques</div>
+        </div>
+      </div>
+	  <nav>
+        <a class="btn" href="Accueil.html">Accueil</a>
+        <a class="btn active" href="Pronostics.html">Pronostics</a>
+        <a class="btn" href="Lesinfos.html">Les Infos</a>
+        <a class="btn" href="Abonnement.html">Abonnement</a>
+      </nav>
+      <div style="margin-left:auto;text-align:right">
+        <div class="date" id="today">...</div>
+        <div class="muted small">Mise à jour automatique</div>
+      </div>
+    </header>
+	
+<!-- bloc Quinté -->
+    <main class="grid">
+      <section>
+        <article class="card">
+          <div class="quinte-top">
+            <div>
+              <h1 id="raceTitle">Quinté+ du jour</h1>
+              <div class="muted small" id="raceMeta">Hippodrome — Course — Heure</div>
+            </div>
+          </div>
+
+          <div class="analysis" id="quinteAnalysis">Chargement de l'analyse...</div>
+
+          <div class="divider"></div>
+
+          <div>
+            <h2>Sélection recommandée</h2>
+            <div class="selection" id="selectionList"></div>
+            <div class="confidence">
+              <div class="bar" aria-hidden="true"><i id="confBar" style="width:55%"></i></div>
+              <div class="conf-val" id="confPercent">Confiance: 55%</div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div>
+            <h2>Notes & Observations</h2>
+            <div class="small muted" id="notesArea">—</div>
+          </div>
+        </article>
+
+<!-- bloc Historique -->
+        <article class="card" style="margin-top:18px">
+          <h1 id="raceTitle">Historique rapide</h1>
+          <p class="small muted">Nos sources incluent analyses de forme, tirage, météo et performances récentes.</p>
+          <div class="meta">
+            <div class="small muted">Fiabilité estimée: <strong id="reliability">Moyenne</strong></div>
+            <div class="small muted">Stratégie: <strong id="strategy">Favoris pondéré</strong></div>
+          </div>
+        </article>
+		
+<!-- Nouveau bloc Pronostics -->
+		<article class="card" style="margin-top:18px">
+            <div>
+          <h1 id="raceTitle">Pronostics</h1>
+          <div id="pronosticsContent">
+            <p class="small muted">Les courses du jour ne sont pas très appétentes, les pronostics sont donc à prendre avec des pincettes :<br>
+
+<h1><strong>R1C4 Quinté+ :</strong></h1> Un quinté composé de petites valeurs, Kristal du Seuil (11) a de bonnes performances à faire valoir. Parfum d’Une Reine (9) fait partie des rares concurrentes au départ à ne pas faire de rentrée, l’entourage semble avoir visé cette épreuve. Balling de Juilley (3) a déjà battu Adrenalyne (4) sur les balais et portera moins de poids cette fois, attention. Adrenalyne (4) a devancé Ocre (1) avec 2 livres de désavantages. Elle portera aujourd’hui 8 livres de moins que son adversaire ! Krisna (8) portera les œillères australiennes pour la première fois. Silver Buckle (10) change de tactique et patientera cette fois. Family Speed (13) peut finir vite, c’est un outsider amusant.
+<h1><strong>Prono : 11-9-3-4-1-8-10-13</strong></h1><br>
+
+<h1><strong>R3C1 :</strong></h1> Avant coup on peut dire que Stingray (2) vient de bien courir dans un terrain pénible, avec les œillères pour le concentrer, il semble être un bon favori. Always Welcome (4), toujours au top malgré son âge, aura le désavantage de rentrer, préparant certainement le meeting de Cagnes, mais bénéficiera de son terrain. Hasapiko (6) effectuera une grande rentrée, cependant elle possède pas mal de qualité, portera également moins de poids que ses adversaires, ce sera amusant de la glisser dans un Super 4.
+<h1><strong>Prono : 2-6-4-1</strong></h1> <br>
+Un Super 4 Champ Libre : 2/1-4-6/1-4-6/1-3-4-5-6 peut être intéressant.
+</p>
+			
+          </div>
+		  		<div class="divider"></div>
+		<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+            <a class="btn ghost" href="#" id="subscribeBtn">S'abonner (RSS)</a>
+            <a class="btn ghost" href="#" id="contactBtn">Contact</a>
+          </div>
+		</article>
+
+        <div id="adminForm">
+          <h2>Administration</h2>
+          <input type="password" id="adminPassword" placeholder="Mot de passe" />
+          <input type="text" id="inputRaceTitle" placeholder="Titre Quinté+" />
+          <textarea id="inputAnalysis" placeholder="Analyse"></textarea>
+          <input type="text" id="inputSelection" placeholder="Sélection (ex: 7,2,11,13,4)" />
+          <input type="number" id="inputConfidence" placeholder="Confiance %" />
+          <textarea id="inputNotes" placeholder="Notes"></textarea>
+          <button onclick="saveData()">Enregistrer</button>
+        </div>
+      </section>
+
+<!-- bloc Cartouches du Jour -->
+      <aside>
+        <div class="card sidebar-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div>
+              <h1 id="raceTitle">Les Cartouches du Jour</h1>
+              <div class="muted small">Par ABTurf</div>
+            </div>
+           
+          </div>
+          <div class="pronostic" id="tipA"></div>
+			<div style="text-align:right">
+                <div style="font-weight:800">Confiance 99%</div><br>
+            </div>
+          <div class="pronostic" id="tipB"></div>
+			<div style="text-align:right">
+				<div style="font-weight:800">Confiance 70%</div><br>	
+          </div>
+		  <div class="pronostic" id="tipC"></div>
+			<div style="text-align:right">
+				<div style="font-weight:800">Confiance 85%</div>
+          </div>
+		  
+		<div class="divider"></div>
+		<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+            <a class="btn ghost" href="#" id="subscribeBtn">S'abonner (RSS)</a>
+            <a class="btn ghost" href="#" id="contactBtn">Contact</a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>© ABTurf 2025 — Conseils et pronostics. Jeu responsable.</div>
+      <div>
+        <a href="mentions-legales.html">Mentions légales</a> / <a href="CGV.html">CGV</a>
+      </div>
+	  <footer>Suivez nous sur les réseaux sociaux : <img src="images/logo/LogoX.jpg" width="12px" height="12px"><a href="https://x.com/ABTurfPronos"> Twitter @ABTurfpronos</a> / <img src="images/logo/LogoFacebook.png" width="12px" height="12px"><a href="https://www.facebook.com/profile.php?id=61581396834106"> Facebook ABTurf</a>
+    </footer>
+  </div>
+
+  <script>
+    const PASSWORD = 'admin123';
+    const dailyData = {
+      date: new Date().toLocaleDateString('fr-FR', {weekday:'long', year:'numeric', month:'long', day:'numeric'}),
+      raceTitle: 'Quinté+ du Lundi 22 Septembre 2025 — Hippodrome de La Capelle (R1 C1) — 13:55 - PRIX COM DE COM THIERACHE DU CENTRE - 2750m Corde à gauche - 14 Partants',
+      analysis: `Très régulier, Ialko Jenilat (5) effectue le déplacement avec des ambitions, c'est une belle base pour ce quinté. Igrisoni (8) est un cheval de classe qui retrouve une distance dans ses cordes. Happy Atout (6) peut jouer les trouble fête à l'issue d'un bon parcours. Hollywood Torino (7) peut faire l'arrivée à condition qu'il parte sur la bonne jambe. Hors Bord (12), ne semble pas hors d'affaire malgré la réserve de son entraîneur. Ipalio (11) peut compléter l'arrivée tout comme Halma D'Amer (13) et Hawai Pont Vautier (14).`,
+      selection: [5,8,6,7,12,11,13,14],
+      confidence: 70,
+      notes: `Pour 7 à 11 ans inclus, n'ayant pas gagné 291.000€ - Recul de 25 m. à 156.000€`,
+      reliability: 'Bonne',
+      strategy: 'Favori pondéré + outsider ciblé',
+      pronostics: [
+        {id: 'A', title: "R1C3 - PRIX DU CONSEIL DEPARTEMENTAL DE L'AISNE - Trot - 2700m Corde à gauche - 15 Partants - 15h05", horses: [6,4,12,10,14,8], confidence: 65, notes: "Letikalin (6), est très estimé. Vient de jouer de malchance à Vincennes. Le cheval est au-dessus du lot en théorie. On peut l'associer à de belles cotes dans cette épreuve comme Lipton Tonic (4), Lupin Meloc (12) ou Lucius de Puch (10)."},
+        {id: 'B', title: "R1C7 - PRIX LES SAVEURS DE NOS FERMES - Trot - 2700m Corde à gauche - 15 Partants - 17h25", horses: [6,5,15], confidence: 70, notes: "Trois chevaux à grosses cotes sont proposés pour compléter vos jeux, à savoir Kimi du Dome (6), un cheval très nerveux mais qui a le potentiel pour faire l'arrivée, Kuzco (5) qui sait finir vite et Katudi (15) qui peut refaire surface après deux échecs."},
+		{id: 'C', title: 'R1C8 - PRIX PMU+ - Trot - 2750m Corde à gauche - 16 Partants - 18h00', horses: [15], confidence: 80, notes: "Italica (15), vient de gagner avec autorité à Gournay-en-Bray. Elle va tenter la passe de 5. Ce qui fait d'elle la favorite toute indiquée."}
+      ]
+    };
+
+    document.getElementById('today').textContent = dailyData.date;
+    document.getElementById('raceTitle').textContent = dailyData.raceTitle.split('—')[0];
+    document.getElementById('raceMeta').textContent = dailyData.raceTitle.split('—').slice(1).join('—').trim();
+    document.getElementById('quinteAnalysis').innerHTML = dailyData.analysis;
+    document.getElementById('notesArea').textContent = dailyData.notes;
+    document.getElementById('reliability').textContent = dailyData.reliability;
+    document.getElementById('strategy').textContent = dailyData.strategy;
+
+    const sel = document.getElementById('selectionList');
+    sel.innerHTML = '';
+    dailyData.selection.forEach(n =>{
+      const d = document.createElement('div');
+      d.className='chip';
+      d.innerHTML = `<span class="num">${n}</span>`;
+      sel.appendChild(d);
+    });
+
+    document.getElementById('confBar').style.width = dailyData.confidence + '%';
+    document.getElementById('confPercent').textContent = `Confiance : ${dailyData.confidence}%`;
+
+    function renderTip(elId, tip){
+      const el = document.getElementById(elId);
+      if(!el) return;
+      el.innerHTML = `<div><strong>${tip.title}</strong><div class="small muted">Chevaux: ${tip.horses.join(' — ')}</div></div><div style="margin-top:10px" class="small muted">${tip.notes}</div>`;
+    }
+
+    dailyData.pronostics.forEach(p => renderTip('tip' + p.id, p));
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+
+    /* ================================
+       Thème sombre inspiré de Pronostics.html
+       ================================ */
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa6bf;
+      --accent: #ffb74d;
+      --success: #7bd389;
+      --danger: #ff7b7b;
+      --glass: rgba(255,255,255,0.03);
+      --radius: 14px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+
+    /* Global */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #071026 0%, #081028 50%, #041018 100%);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ================================
+       Header
+       ================================ */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    header .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .logo {
+      background: linear-gradient(90deg, #ffd09a, #ffb74d);
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #081022;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.6px;
+    }
+
+    header .title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    header .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    nav {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+    }
+
+    nav .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #1f6f9f, #2ea3ff);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.3s ease;
+    }
+
+    nav .btn:hover {
+      background: linear-gradient(90deg, #2ea3ff, #1f6f9f);
+    }
+
+    /* ================================
+       Cartes et contenu
+       ================================ */
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+      margin-bottom: 20px;
+    }
+
+    h2, h3 {
+      margin: 0 0 12px 0;
+      font-weight: 600;
+    }
+
+    p {
+      line-height: 1.5;
+      color: #dbe9ff;
+    }
+	
+
+	
+	.muted{color:var(--muted)}
+    .small{font-size:13px}
+    .divider{height:1px;background:rgba(255,255,255,0.03);margin:12px 0;border-radius:2px}
+
+    /* ================================
+       Tableaux
+       ================================ */
+    .races-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    .races-table th,
+    .races-table td {
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    .races-table thead th {
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-size: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .races-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      transition: background 0.2s ease;
+    }
+
+    .races-table tbody tr:hover {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .tip {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .odds {
+      font-weight: bold;
+      text-align: right;
+    }
+
+    /* ================================
+       Boutons principaux
+       ================================ */
+    .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #1f6f9f, #2ea3ff);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #2ea3ff, #1f6f9f);
+    }
+
+    /* ================================
+       Footer
+       ================================ */
+    footer {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+	  padding: 4px 0px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* ================================
+       Responsivité
+       ================================ */
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .container {
+        padding: 0 12px;
+      }
+
+      .card {
+        padding: 14px;
+      }
+
+      .races-table th, .races-table td {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+
+      /* ================================
+       Thème sombre
+       ================================ */
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa6bf;
+      --accent:#ffb74d;
+      --success:#7bd389;
+      --danger:#ff7b7b;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#071026 0%, #081028 50%, #041018 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+    }
+    .container{max-width:1100px;margin:0 auto}
+
+    /* ================================
+       Header
+       ================================ */
+	   
+    header{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+    .logo{
+      background: linear-gradient(90deg, #ffd09a, #ffb74d);
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #081022;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.6px;
+    }
+	
+    .site-title{font-size:18px;font-weight:700}
+    .sub{color:var(--muted);font-size:13px}
+	
+	    nav {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+    }
+	
+	nav .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #1f6f9f, #2ea3ff);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.3s ease;
+    }
+
+    nav .btn:hover {
+      background: linear-gradient(90deg, #2ea3ff, #1f6f9f);
+    }
+
+    /* ================================
+       Cartes et contenu
+       ================================ */
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    @media (max-width:880px){.grid{grid-template-columns:1fr} .sidebar-card{order:2}}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(2,6,23,0.6);margin-bottom: 20px;}
+
+    .quinte-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .date{color:var(--muted);font-size:13px}
+    h1,h2,h3{margin:0}
+    h1{font-size:20px}
+    h2{font-size:16px}
+
+    .analysis{line-height:1.45;color:#dbe9ff;margin-top:8px}
+
+    .selection{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{background:var(--glass);padding:10px 12px;border-radius:999px;font-weight:700}
+    .chip .num{display:inline-block;width:28px;height:28px;line-height:28px;border-radius:50%;background:rgba(255,255,255,0.04);text-align:center;margin-right:8px}
+
+    .confidence{margin-top:12px;display:flex;gap:8px;align-items:center}
+    .bar{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;width:200px}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#ffdfb5)}
+    .conf-val{font-weight:700;color:var(--muted);font-size:13px}
+	
+	.sidebar-card .pronostic{margin-bottom:14px}
+    .pronostic .title{display:flex;justify-content:space-between;align-items:center}
+    .btn{display:inline-block;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,#1f6f9f,#2ea3ff);color:white;text-decoration:none;font-weight:700}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);font-weight:600}
+	.element.style {margin-top: 10px;}
+
+    .sidebar-card .pronostic{margin-bottom:14px}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+    footer{margin-top:20px;color:var(--muted);font-size:13px;text-align:center;padding: 4px 0px;}
+
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    .divider{height:1px;background:rgba(255,255,255,0.03);margin:12px 0;border-radius:2px}
+
+    @media print{
+      body{background:white;color:black;padding:0}
+      .card{background:white;box-shadow:none;border-radius:0}
+    }
+	
+	/* ================================
+    Footer
+    ================================ */
+    footer {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+	img {
+		width: 13px;
+		height: 13px;;
+	}
+
+    /* Formulaire admin */
+    #adminForm {display:none; background:var(--card); padding:16px; border-radius:var(--radius); margin-top:20px;}
+    #adminForm input, #adminForm textarea {width:100%; margin-bottom:10px; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:#1b2332; color:white;}
+    #adminForm button {padding:8px 12px; border:none; border-radius:8px; background:var(--accent); color:black; font-weight:bold; cursor:pointer;}

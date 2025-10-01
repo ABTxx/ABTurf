@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ABTurf — Accueil</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ================================
+       Thème sombre inspiré de Pronostics.html
+       ================================ */
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa6bf;
+      --accent: #ffb74d;
+      --success: #7bd389;
+      --danger: #ff7b7b;
+      --glass: rgba(255,255,255,0.03);
+      --radius: 14px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+
+    /* Global */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #071026 0%, #081028 50%, #041018 100%);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ================================
+       Header
+       ================================ */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    header .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .logo {
+      background: linear-gradient(90deg, #ffd09a, #ffb74d);
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #081022;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.6px;
+    }
+
+    header .title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    header .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    nav {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+    }
+
+    nav .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #1f6f9f, #2ea3ff);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.3s ease;
+    }
+
+    nav .btn:hover {
+      background: linear-gradient(90deg, #2ea3ff, #1f6f9f);
+    }
+	
+	nav .btn.active {
+	box-shadow: 0 0 0 2px white;
+	transform: translateY(-2px);
+	}
+
+    /* ================================
+       Cartes et contenu
+       ================================ */
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+      margin-bottom: 20px;
+    }
+
+	.date{color:var(--muted);font-size:13px}
+		h1,h2,h3{margin:0}
+		h1{font-size:20px}
+		h2{font-size:16px}
+
+    h2, h3 {
+      margin: 0 0 12px 0;
+      font-weight: 600;
+    }
+
+    p {
+      line-height: 1.5;
+      color: #dbe9ff;
+    }
+	
+
+	
+	.muted{color:var(--muted)}
+    .small{font-size:13px}
+    .divider{height:1px;background:rgba(255,255,255,0.03);margin:12px 0;border-radius:2px}
+
+    /* ================================
+       Tableaux
+       ================================ */
+    .races-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    .races-table th,
+    .races-table td {
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    .races-table thead th {
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-size: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .races-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      transition: background 0.2s ease;
+    }
+
+    .races-table tbody tr:hover {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .tip {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .odds {
+      font-weight: bold;
+      text-align: right;
+    }
+
+    /* ================================
+       Boutons principaux
+       ================================ */
+    .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #1f6f9f, #2ea3ff);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #2ea3ff, #1f6f9f);
+    }
+
+    /* ================================
+       Footer
+       ================================ */
+    footer {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+	  padding: 4px 0px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* ================================
+       Responsivité
+       ================================ */
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .container {
+        padding: 0 12px;
+      }
+
+      .card {
+        padding: 14px;
+      }
+
+      .races-table th, .races-table td {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">ABTurf</div>
+        <div>
+          <div class="title">Accueil</div>
+          <div class="subtitle">Pronostics & analyses hippiques</div>
+        </div>
+      </div>
+      <nav>
+        <a class="btn active" href="Accueil.html">Accueil</a>
+        <a class="btn" href="Pronostics.html">Pronostics</a>
+        <a class="btn" href="Lesinfos.html">Les Infos</a>
+        <a class="btn" href="Abonnement.html">Abonnement</a>
+      </nav>
+	  <div style="margin-left:auto;text-align:right">
+		<div class="date" id="today">...</div>
+        <div class="muted small">Mise à jour automatique</div>
+		
+		<script>
+		const dailyData = {
+      date: new Date().toLocaleDateString('fr-FR',{weekday:'long',year:'numeric',month:'long',day:'numeric'}),
+      raceMeta: "Hippodrome de Vincennes — Quinté+ — 13h50"
+    };
+    document.getElementById("today").textContent = dailyData.date;
+    document.getElementById("raceMeta").textContent = dailyData.raceMeta;
+		</script>
+      </div>
+    </header>
+
+    <main>
+      <div class="card">
+        <h3>Bienvenue sur ABTurf</h3>
+		<img src="images/divers/Image_Accueil_ABTurf.png" width="1065px" height="357px"/>
+        <p>Retrouvez les meilleurs pronostics du jour, nos analyses expertes et les conseils de nos tipsters pour parier intelligemment.</p>
+      </div>
+
+      <div class="card">
+        <h3>Pronostics gratuits du jour</h3>
+        <table class="races-table">
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Tip</th>
+              <th>Cote</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lyon-Parilly — Prix du Printemps</td>
+              <td><span class="tip">n°3 — Éclair de Lune</span></td>
+              <td class="odds">3.8</td>
+            </tr>
+            <tr>
+              <td>Deauville — Prix des Sables</td>
+              <td><span class="tip">n°7 — Vent d'Argent</span></td>
+              <td class="odds">5.2</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><a class="btn" href="Abonnement.html">Accéder à tous les pronostics</a></p>
+      </div>
+    </main>
+	
+
+    <footer>
+      <div>© ABTurf 2025 — Conseils et pronostics. Jeu responsable.</div>
+      <div>
+        <a href="mentions-legales.html">Mentions légales</a> / <a href="CGV.html">CGV</a>
+      </div>
+	  <footer>Suivez nous sur les réseaux sociaux : <img src="images/logo/LogoX.jpg" width="12px" height="12px"><a href="https://x.com/ABTurfPronos"> Twitter @ABTurfpronos</a> / <img src="images/logo/LogoFacebook.png" width="12px" height="12px"><a href="https://www.facebook.com/profile.php?id=61581396834106"> Facebook ABTurf</a>
+    </footer>
+  </div>
+</body>
+</html>
